@@ -1,8 +1,27 @@
 # Documento 1: común
+# primary
 eureka:
   client:
-    service-url:
-      defaultZone: http://localhost:8010/eureka/
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://eureka-secondary:8012/eureka/,http://eureka-tertiary:8013/eureka/
+
+# secondary
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://eureka-primary:8011/eureka/,http://eureka-tertiary:8013/eureka/
+
+# tertiary
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://eureka-primary:8011/eureka/,http://eureka-secondary:8012/eureka/
 
 ---
 # Documento 2: perfil 'pronoun'
